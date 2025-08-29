@@ -8,3 +8,27 @@
     box-sizing: border-box;
     font-family: "Ubuntu-Sans", sans-serif;
 }
+
+.site-wrapper {
+    display: grid;
+    grid-template-rows: 200px 1fr 200px;
+    grid-template-columns: 1fr;
+
+    width: 100vw;
+    height: 100vh;
+}
+
+header {
+    background-color: aquamarine;
+    grid-row: 1/2;
+}
+
+.library-cards {
+    background-color: bisque;
+    grid-row: 2/3;
+}
+
+footer {
+    background-color: aqua;
+    grid-row: 3/4;
+}
