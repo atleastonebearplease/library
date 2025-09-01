@@ -83,6 +83,25 @@ header {
     display: grid;
     grid-template-rows: 4fr 1.5fr;
     grid-template-columns: 1fr;
+
+    position: relative;
+
+}
+
+.book-card::after {
+    content: "X";
+    border-radius: 50%;
+    background-color: red;
+    font-weight: bold;
+
+    position: absolute;
+    right: -7px;
+    top: -7px;
+    width: 2rem;
+    height: 2rem;
+
+    padding: .25rem;
+    text-align: center;
 }
 
 .book-card__image {
