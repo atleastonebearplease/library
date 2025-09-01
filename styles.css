@@ -1,4 +1,4 @@
-@import url("../ExperimentStylingCSS/josh-c-styles.css");
+@import url("josh-c-styles.css");
 
 :root {
     /*Variables here*/
@@ -9,18 +9,42 @@
     font-family: "Ubuntu-Sans", sans-serif;
 }
 
-.site-wrapper {
-    display: grid;
-    grid-template-rows: 200px 1fr 200px;
-    grid-template-columns: 1fr;
-
+body {
     width: 100vw;
     height: 100vh;
+    display: flex; 
+    justify-content: center;
+
+    background-color: antiquewhite;
+}
+
+.site-wrapper {
+    display: grid;
+    grid-template-rows: 150px 1fr 150px;
+    grid-template-columns: 1fr;
+
+    width: clamp(300px, 100%, 1000px);
+    height: 100%;
 }
 
 header {
     background-color: aquamarine;
     grid-row: 1/2;
+    display: grid;
+
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
+}
+
+.add-book {
+    grid-row: 2/3;
+    grid-column: 2/3;
+
+    height: 30px;
+    width: 100px;
+
+    align-self: end;
+    justify-self: end;
 }
 
 .library-cards {
