@@ -1,3 +1,6 @@
+const addBookButton = document.querySelector('.header__add-book');
+const addBookDialog = document.querySelector('#add-book-dialog');
+
 const myLibrary = [];
 
 function Book(title, author, pages, isRead, uniqueID = 0, notes = '') {
@@ -21,7 +24,7 @@ function addBookToLibrary(title, author, pages, isRead, notes) {
     myLibrary.push(newBook);
 }
 
-function makeBookCard(book, imgSrc="") {
+function makeBookCardDiv(book, imgSrc="") {
     let hasBeenRead = book.isRead ? "Yes" : "No";
     
     let htmlString = 
@@ -49,15 +52,60 @@ function addBookCardToPage(bookCard) {
     document.querySelector(".library-cards").appendChild(bookCard);
 }
 
-//for now, just push to console while we work on the JS
-function displayLibrary() {
-    for(book of myLibrary) {
-        console.log(`Title: ${book.title} | Author: ${book.author} | Pages: ${book.pages} | Read: ${book.isRead} | ID: ${book.uniqueID}`);
-    }
+function addBookButtonClick() {
+    console.log("Ouch!");
+
+    addBookDialog.showModal();
 }
 
 addBookToLibrary("The Lord of the Rings", "JRR Tolkien", 1000, true, "Literally my favorite");
 addBookToLibrary("The lord of the flies", "Unknown", 200, true);
 
-addBookCardToPage(makeBookCard(myLibrary[0]));
+addBookCardToPage(makeBookCardDiv(myLibrary[0]));
 
+let bookButton = document.querySelector(".header__add-book");
+
+bookButton.addEventListener('click', addBookButtonClick);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//Testing Modals
+
+const showButton = document.getElementById("showDialog");
+const favDialog = document.getElementById("favDialog");
+const outputBox = document.querySelector("output");
+
+const selectEl = favDialog.querySelector("select");
+const confirmBtn = favDialog.querySelector("#confirmBtn");
+
+// "Show the dialog" button opens the <dialog> modally
+showButton.addEventListener("click", () => {
+  favDialog.showModal();
+});
+
+//"Cancel" button closes the dialog without submitting because of [formmethod="dialog"], triggering a close event
+favDialog.addEventListener("close", (e)=> {
+    outputBox.value = 
+        favDialog.returnValue === 'default' 
+        ? "No return value."
+        : `ReturnValue: ${favDialog.returnValue}.`; //Have to check for "default" rather than empty string
+});
+
+//Prevent the confirm button from the default behavior of submitting the form, and close the dialog with the 
+//close() method, which triggers the 'close' event
+confirmBtn.addEventListener('click', (event)=> {
+    event.preventDefault(); //We don't want to submit this fake form
+    favDialog.close(selectEl.value); //Have to send the select box value here
+})

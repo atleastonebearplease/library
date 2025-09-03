@@ -11,7 +11,7 @@
     <div class="site-wrapper">
         <header>
             <h1 class="header-heading">Welcome to your Library!</h1>
-            <button class="add-book">Add Book</button>
+            <button class="header__add-book">Add Book</button>
         </header>
         <div class="library-cards">
 
@@ -32,6 +32,41 @@
             <h1>footer</h1>
         </footer>
     </div>
+
+<dialog id="add-book-dialog" closedby="any">
+    <form method="dialog">
+        <p>
+            <label>Title: 
+                <input type="text" required>
+            </label>
+        </p>
+    </form>
+</dialog>
+
+<!-- A modal dialog containing a form -->
+<dialog id="favDialog" closedby="any">
+  <form>
+    <p>
+      <label>
+        Favorite animal:
+        <select>
+          <option value="default">Choose…</option>
+          <option>Brine shrimp</option>
+          <option>Red panda</option>
+          <option>Spider monkey</option>
+        </select>
+      </label>
+    </p>
+    <div>
+      <button value="cancel" formmethod="dialog">Cancel</button>
+      <button id="confirmBtn" value="default">Confirm</button>
+    </div>
+  </form>
+</dialog>
+<p>
+  <button id="showDialog">Show the dialog</button>
+</p>
+<output></output>
 
 </body>
 
