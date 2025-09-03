@@ -122,3 +122,9 @@ footer {
 }
 
 /*======Utils======*/
+
+.testing {
+    background: magenta;
+    width: 100px;
+    height: 100px;
+}
