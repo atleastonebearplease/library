@@ -9,7 +9,7 @@ const bookForm = document.querySelector('.dialog__form')
 
 const myLibrary = [];
 
-function Book(title, author, pages, isRead, uniqueID = 0, notes = '') {
+function Book(title, author, pages, isRead, uniqueID = 0, notes = '', imageURL = '') {
     if(!new.target){
         throw Error("You must use the 'new' operator to call the constructor");
     }
@@ -20,22 +20,30 @@ function Book(title, author, pages, isRead, uniqueID = 0, notes = '') {
     this.isRead = isRead;
     this.uniqueID = uniqueID;
     this.notes = notes;
+    this.imageURL = imageURL;
 }
 
-function addBookToLibrary(title, author, pages, isRead, notes) {
+function addBookToLibrary(title, author, pages, isRead, notes = '', imageURL = '') {
     let id = crypto.randomUUID();
 
-    let newBook = new Book(title, author, pages, isRead, id, notes);
+    let newBook = new Book(title, author, pages, isRead, id, notes, imageURL);
 
     myLibrary.push(newBook);
 }
 
-function makeBookCardDiv(book, imgSrc="") {
+function makeBookCardDiv(book) {
+    let imageElementString = '';
+    
+    //If the book was givne a URL, include the img element. Otherwise, don't. 
+    if(book.imageURL !== ''){
+        imageElementString = 
+        `<div class="book-card__image">
+            <img src="${book.imageURL}" alt="Book Image">
+        </div>`;
+    }
+    
     let htmlString = 
-    `<div class="book-card__image">
-        <img src="" alt="Book Image">
-    </div>
-    <div class="book-card__text">
+    `<div class="book-card__text">
         <p><strong>Title:</strong> <span>${book.title}</span></p>
         <p><strong>Author:</strong> <span>${book.author}</span></p>
         <p><strong>Pages:</strong> <span>${book.pages}</span></p>
@@ -46,7 +54,7 @@ function makeBookCardDiv(book, imgSrc="") {
     let div = document.createElement('div');
     div.className = 'book-card';
 
-    div.innerHTML = htmlString;
+    div.innerHTML = imageElementString + htmlString; 
     div.setAttribute('data-bookId', book.uniqueID);
 
     return div;
@@ -59,7 +67,7 @@ function addBookToPage(book) {
 }
 
 
-addBookToLibrary("The Lord of the Rings", "JRR Tolkien", 1000, true, "Literally my favorite");
+addBookToLibrary("The Lord of the Rings", "JRR Tolkien", 1000, true, "Literally my favorite", 'https://upload.wikimedia.org/wikipedia/en/0/00/WoT01_TheEyeOfTheWorld.jpg');
 addBookToLibrary("The lord of the flies", "Unknown", 200, true);
 
 addBookToPage(myLibrary[0]);
@@ -90,9 +98,10 @@ function submitDialog(event) {
     let pages = formData.get('book-pages');
     let hasBeenRead = formData.get('has-been-read');
     let notes = formData.get('book-notes');
+    let URL = formData.get('book-image-url');
 
-    addBookToLibrary(title, author, pages, hasBeenRead, notes);
-    addBookToPage(myLibrary.at(-1));
+    addBookToLibrary(title, author, pages, hasBeenRead, notes, URL);
+    addBookToPage(myLibrary.at(-1)); //Add the last book in the stack
 
     bookForm.reset();
     addBookDialog.close();
