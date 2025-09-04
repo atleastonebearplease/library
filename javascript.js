@@ -62,8 +62,10 @@ function makeBookCardDiv(book) {
     //If the book doesn't contain an image URL, then use both grid rows to house the text
     if(book.imageURL === ''){
         div.querySelector('.book-card__text').classList.add('book-card__text--center');
-        div.querySelector('.book-notes').classList.add('book-notes--more-room');
+        div.querySelector('.book-notes').classList.add('book-notes--center');
     }
+
+    div.querySelector('.book-card__delete').addEventListener('click', deleteBook);
 
     return div;
 }
@@ -116,3 +118,25 @@ function submitDialog(event) {
 }
 
 bookForm.addEventListener('submit', submitDialog);
+
+function deleteBookFromArray(bookID){
+    for(let i = 0; i < myLibrary.length; i++){
+        if(myLibrary[i].uniqueID === bookID){ //IDs are unique, there should only be one
+            myLibrary.splice(i, 1);
+            break;
+        }
+    }
+}
+
+function deleteBook(event) {
+    let bookCard = event.target.parentNode.parentNode;
+
+    if(bookCard){
+        let bookID = bookCard.getAttribute('data-bookId');
+
+        deleteBookFromArray(bookID);
+
+        bookCard.remove();
+    }
+    
+}

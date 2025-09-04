@@ -101,6 +101,7 @@ header {
     grid-row: 2/3;
 }
 
+/*For when there is no img element*/
 .book-card__text--center {
     grid-row: 1/3;
 }
@@ -114,13 +115,10 @@ header {
     overflow: hidden;
 }
 
-.book-notes--more-room {
+/*For when there is no img element*/
+.book-notes--center {
     -webkit-line-clamp: 10;
     line-clamp: 10;
-}
-
-.book-card__text > p:last-of-type {
-    display: inline;
 }
 
 .delete-wrapper {
@@ -130,12 +128,19 @@ header {
 }
 
 .book-card__delete {
-    background-color: tomato;
-    border: none;
-    border-radius: 20%;
     width: 5rem;
     height: 2rem;
     float: right;
+
+    background-color: tomato;
+    border: none;
+    border-radius: 20%;
+    font-weight: bold;
+}
+
+.book-card__delete:hover {
+    background-color: hsl(9, 64%, 53%);
+    cursor: pointer;
 }
 
 footer {
