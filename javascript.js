@@ -1,5 +1,9 @@
 const addBookButton = document.querySelector('.header__add-book');
-const addBookDialog = document.querySelector('#add-book-dialog');
+const addBookDialog = document.querySelector('.dialog');
+const dialogCancelButton = document.querySelector('.dialog__cancel');
+
+const bookForm = document.querySelector('.dialog__form')
+
 
 const myLibrary = [];
 
@@ -52,22 +56,39 @@ function addBookCardToPage(bookCard) {
     document.querySelector(".library-cards").appendChild(bookCard);
 }
 
-function addBookButtonClick() {
-    console.log("Ouch!");
-
-    addBookDialog.showModal();
-}
 
 addBookToLibrary("The Lord of the Rings", "JRR Tolkien", 1000, true, "Literally my favorite");
 addBookToLibrary("The lord of the flies", "Unknown", 200, true);
 
 addBookCardToPage(makeBookCardDiv(myLibrary[0]));
-
-let bookButton = document.querySelector(".header__add-book");
-
-bookButton.addEventListener('click', addBookButtonClick);
+addBookCardToPage(makeBookCardDiv(myLibrary[1]));
 
 
+//================Button Event Listeners and Functions
+
+function showDialog() {
+    addBookDialog.showModal();
+}
+
+addBookButton.addEventListener('click', showDialog);
+
+function closeDialog() {
+    addBookDialog.close();
+}
+
+dialogCancelButton.addEventListener('click', closeDialog);
+
+function submitDialog(event) {
+    event.preventDefault();
+
+    const formData = new FormData(bookForm);
+
+    let title = formData.get('book-title');
+    let author = formData.get('book-author');
+    let pages = formData.get('book-pages');
+    let hasBeenRead = formData.get('has-been-read');
+    let notes = formData.get('book-notes');
+}
 
 
 

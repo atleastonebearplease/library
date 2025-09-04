@@ -15,30 +15,51 @@
         </header>
         <div class="library-cards">
 
-            <div class="book-card">
-                <div class="book-card__image">
-                    <img src="" alt="Book Image">
-                </div>
-                <div class="book-card__text" data-bookId="">
-                    <p><strong>Title:</strong> <span>The Eye of the World</span></p>
-                    <p><strong>Author:</strong> <span>Robert Jordan</span></p>
-                    <p><strong>Pages:</strong> <span>768</span></p>
-                    <p><strong>Read?:</strong> <span>Yes</span></p>
-                    <p><strong>Notes:</strong> <span>Best series ever!</span></p>
-                </div>
-            </div>
         </div>
         <footer>
             <h1>footer</h1>
         </footer>
     </div>
 
-<dialog id="add-book-dialog" closedby="any">
-    <form method="dialog">
-        <p>
-            <label>Title: 
-                <input type="text" required>
+<dialog class="dialog" closedby="any">
+    <form method="dialog" class="dialog__form">
+      <h2>Enter your book information</h2>
+      <p>
+          <label>Title: 
+              <input type="text" class="title-input" name="book-title">
+          </label>
+      </p>
+          <p>
+            <label>Author:
+              <input type="text" class="author-input" name="book-author">
             </label>
+          </p>
+
+        <p>
+          <label>Pages:
+            <input type="number" class="pages-input" name="book-pages">
+          </label>
+        </p>
+
+        <fieldset>
+          <legend>Has been read?</legend>
+          <label for="book-dialog__yes">Yes
+            <input type="radio" name="has-been-read" value="yes" id="book-dialog__yes">
+          </label>
+          <label for="book-dialog__no">No
+            <input type="radio" name="has-been-read" value="no" id="book-dialog__no">
+          </label>
+        </fieldset>
+
+        <p>
+          <label>Notes: 
+            <textarea name="book-notes" class="notes-input"></textarea>
+          </label>
+        </p>
+
+        <p>
+          <button value="cancel" formmethod="dialog" class="dialog__cancel">Cancel</button>
+          <button>Submit</button>
         </p>
     </form>
 </dialog>
