@@ -22,32 +22,38 @@
     </div>
 
 <dialog class="dialog" closedby="any">
-    <form method="dialog" class="dialog__form">
+    <form class="dialog__form">
       <h2>Enter your book information</h2>
       <p>
           <label>Title: 
-              <input type="text" class="title-input" name="book-title">
+              <input type="text" class="title-input" name="book-title" required>
           </label>
       </p>
           <p>
             <label>Author:
-              <input type="text" class="author-input" name="book-author">
+              <input type="text" class="author-input" name="book-author" required>
             </label>
           </p>
 
         <p>
           <label>Pages:
-            <input type="number" class="pages-input" name="book-pages">
+            <input type="number" class="pages-input" name="book-pages" required>
+          </label>
+        </p>
+
+        <p>
+          <label>Book image URL (Optional):
+            <input type="url" class="image-url-input" name="book-image-url">
           </label>
         </p>
 
         <fieldset>
           <legend>Has been read?</legend>
           <label for="book-dialog__yes">Yes
-            <input type="radio" name="has-been-read" value="Yes" id="book-dialog__yes">
+            <input type="radio" name="has-been-read" value="Yes" id="book-dialog__yes" required>
           </label>
           <label for="book-dialog__no">No
-            <input type="radio" name="has-been-read" value="No" id="book-dialog__no">
+            <input type="radio" name="has-been-read" value="No" id="book-dialog__no" required>
           </label>
         </fieldset>
 
@@ -58,7 +64,7 @@
         </p>
 
         <p>
-          <button value="cancel" formmethod="dialog" class="dialog__cancel">Cancel</button>
+          <button value="cancel" formmethod="dialog" class="dialog__cancel" type="close">Cancel</button>
           <button class="dialog__submit">Submit</button>
         </p>
     </form>
