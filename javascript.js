@@ -43,19 +43,27 @@ function makeBookCardDiv(book) {
     }
     
     let htmlString = 
-    `<div class="book-card__text">
+    `
+    <div class="book-card__text">
         <p><strong>Title:</strong> <span>${book.title}</span></p>
         <p><strong>Author:</strong> <span>${book.author}</span></p>
         <p><strong>Pages:</strong> <span>${book.pages}</span></p>
         <p><strong>Read?:</strong> <span>${book.isRead}</span></p>
         <p><strong>Notes:</strong> <span class="book-notes">${book.notes}</span></p>
-    </div>`;
+    </div>
+    <div class="delete-wrapper"><button class="book-card__delete">Delete</button></div>
+    `;
     
     let div = document.createElement('div');
     div.className = 'book-card';
-
     div.innerHTML = imageElementString + htmlString; 
     div.setAttribute('data-bookId', book.uniqueID);
+
+    //If the book doesn't contain an image URL, then use both grid rows to house the text
+    if(book.imageURL === ''){
+        div.querySelector('.book-card__text').classList.add('book-card__text--center');
+        div.querySelector('.book-notes').classList.add('book-notes--more-room');
+    }
 
     return div;
 }
@@ -67,8 +75,8 @@ function addBookToPage(book) {
 }
 
 
-addBookToLibrary("The Lord of the Rings", "JRR Tolkien", 1000, true, "Literally my favorite", 'https://upload.wikimedia.org/wikipedia/en/0/00/WoT01_TheEyeOfTheWorld.jpg');
-addBookToLibrary("The lord of the flies", "Unknown", 200, true);
+addBookToLibrary("The Lord of the Rings", "JRR Tolkien", 1000, "Yes", "Literally my favorite start to a book series of all time. I spent so much time in the world of Robert Jordan growing up and I would not have it any other way as an adult. So much of my creative mind is built upon worlds that Robert Jordan built before I existed.", 'https://upload.wikimedia.org/wikipedia/en/0/00/WoT01_TheEyeOfTheWorld.jpg');
+addBookToLibrary("The lord of the flies", "Unknown", 200, "Yes");
 
 addBookToPage(myLibrary[0]);
 addBookToPage(myLibrary[1]);
