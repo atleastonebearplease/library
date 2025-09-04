@@ -44,10 +44,10 @@
         <fieldset>
           <legend>Has been read?</legend>
           <label for="book-dialog__yes">Yes
-            <input type="radio" name="has-been-read" value="yes" id="book-dialog__yes">
+            <input type="radio" name="has-been-read" value="Yes" id="book-dialog__yes">
           </label>
           <label for="book-dialog__no">No
-            <input type="radio" name="has-been-read" value="no" id="book-dialog__no">
+            <input type="radio" name="has-been-read" value="No" id="book-dialog__no">
           </label>
         </fieldset>
 
@@ -59,35 +59,10 @@
 
         <p>
           <button value="cancel" formmethod="dialog" class="dialog__cancel">Cancel</button>
-          <button>Submit</button>
+          <button class="dialog__submit">Submit</button>
         </p>
     </form>
 </dialog>
-
-<!-- A modal dialog containing a form -->
-<dialog id="favDialog" closedby="any">
-  <form>
-    <p>
-      <label>
-        Favorite animal:
-        <select>
-          <option value="default">Choose…</option>
-          <option>Brine shrimp</option>
-          <option>Red panda</option>
-          <option>Spider monkey</option>
-        </select>
-      </label>
-    </p>
-    <div>
-      <button value="cancel" formmethod="dialog">Cancel</button>
-      <button id="confirmBtn" value="default">Confirm</button>
-    </div>
-  </form>
-</dialog>
-<p>
-  <button id="showDialog">Show the dialog</button>
-</p>
-<output></output>
 
 </body>
 

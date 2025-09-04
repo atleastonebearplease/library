@@ -1,6 +1,8 @@
 const addBookButton = document.querySelector('.header__add-book');
+
 const addBookDialog = document.querySelector('.dialog');
 const dialogCancelButton = document.querySelector('.dialog__cancel');
+const dialogSubmitButton = document.querySelector('.dialog__submit')
 
 const bookForm = document.querySelector('.dialog__form')
 
@@ -29,8 +31,6 @@ function addBookToLibrary(title, author, pages, isRead, notes) {
 }
 
 function makeBookCardDiv(book, imgSrc="") {
-    let hasBeenRead = book.isRead ? "Yes" : "No";
-    
     let htmlString = 
     `<div class="book-card__image">
         <img src="" alt="Book Image">
@@ -39,7 +39,7 @@ function makeBookCardDiv(book, imgSrc="") {
         <p><strong>Title:</strong> <span>${book.title}</span></p>
         <p><strong>Author:</strong> <span>${book.author}</span></p>
         <p><strong>Pages:</strong> <span>${book.pages}</span></p>
-        <p><strong>Read?:</strong> <span>${hasBeenRead}</span></p>
+        <p><strong>Read?:</strong> <span>${book.isRead}</span></p>
         <p><strong>Notes:</strong> <span class="book-notes">${book.notes}</span></p>
     </div>`;
     
@@ -51,8 +51,10 @@ function makeBookCardDiv(book, imgSrc="") {
 
     return div;
 }
+1
+function addBookToPage(book) {
+    let bookCard = makeBookCardDiv(book);
 
-function addBookCardToPage(bookCard) {
     document.querySelector(".library-cards").appendChild(bookCard);
 }
 
@@ -60,8 +62,8 @@ function addBookCardToPage(bookCard) {
 addBookToLibrary("The Lord of the Rings", "JRR Tolkien", 1000, true, "Literally my favorite");
 addBookToLibrary("The lord of the flies", "Unknown", 200, true);
 
-addBookCardToPage(makeBookCardDiv(myLibrary[0]));
-addBookCardToPage(makeBookCardDiv(myLibrary[1]));
+addBookToPage(myLibrary[0]);
+addBookToPage(myLibrary[1]);
 
 
 //================Button Event Listeners and Functions
@@ -81,6 +83,8 @@ dialogCancelButton.addEventListener('click', closeDialog);
 function submitDialog(event) {
     event.preventDefault();
 
+    debugger;
+
     const formData = new FormData(bookForm);
 
     let title = formData.get('book-title');
@@ -88,10 +92,15 @@ function submitDialog(event) {
     let pages = formData.get('book-pages');
     let hasBeenRead = formData.get('has-been-read');
     let notes = formData.get('book-notes');
+
+    addBookToLibrary(title, author, pages, hasBeenRead, notes);
+    addBookToPage(myLibrary.at(-1));
+
+    bookForm.reset();
+    addBookDialog.close();
 }
 
-
-
+dialogSubmitButton.addEventListener('click', submitDialog);
 
 
 
