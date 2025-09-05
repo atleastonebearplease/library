@@ -51,7 +51,9 @@ function makeBookCardDiv(book) {
         <p><strong>Read?:</strong> <span>${book.isRead}</span></p>
         <p><strong>Notes:</strong> <span class="book-notes">${book.notes}</span></p>
     </div>
-    <div class="delete-wrapper"><button class="book-card__delete">Delete</button></div>
+    <div class="delete-wrapper"><button class="book-card__delete">
+    <div class="svg-wrapper"><img src="trash-can-outline.svg"></div>
+    Delete</button></div>
     `;
     
     let div = document.createElement('div');
