@@ -7,72 +7,73 @@
     <title>Title Here</title>
 </head>
 <body>
-
     <div class="site-wrapper">
+
         <div class="header-wrapper">
           <header>
-              <h1 class="header__heading">Welcome to your Library!</h1>
+              <h1 class="header__heading">Your Library</h1>
+              
               <button class="header__add-book-button">
                 <div class="svg-wrapper">
                   <img src="book-plus-outline.svg" alt="">
                 </div>
-                Add Book</button>
+                Add Book
+              </button>
+        
           </header>
         </div>
+        
         <div class="library-cards">
+        </div>
+
         <footer>
-            <h1>footer</h1>
+            <h1>Copyright Alex Walters - 2025</h1>
         </footer>
     </div>
 
-<dialog class="dialog" closedby="any">
-    <form class="dialog__form">
-      <h2>Enter your book information</h2>
-      <p>
-          <label>Title: 
-              <input type="text" class="title-input" name="book-title" required>
-          </label>
-      </p>
-          <p>
-            <label>Author:
-              <input type="text" class="author-input" name="book-author" required>
-            </label>
-          </p>
+  <dialog class="dialog" closedby="any" open style="z-index: 100">
+      <form class="dialog__form">
+        <h2>Enter your book information</h2>
+        <div class="input-group">
+            <label for="title">Title: </label>
+            <input type="text" class="title-input" name="book-title" id='title' required>
+        </div>
+        <div class="input-group">
+          <label for="author">Author: </label>
+          <input type="text" class="author-input" name="book-author" id='author'required>
+        </div>
 
-        <p>
-          <label>Pages:
-            <input type="number" class="pages-input" name="book-pages" required>
-          </label>
-        </p>
+        <div class="input-group">
+          <label for="pages">Pages: </label>
+          <input type="number" class="pages-input" name="book-pages" id="pages" required>
+        </div>
 
-        <p>
-          <label>Book image URL (Optional):
-            <input type="url" class="image-url-input" name="book-image-url">
-          </label>
-        </p>
+        <div class="input-group">
+          <label for="url">Book image URL (Optional):</label>
+          <input type="url" class="image-url-input" name="book-image-url" id="url">
+        </div>
 
         <fieldset>
           <legend>Has been read?</legend>
-          <label for="book-dialog__yes">Yes
-            <input type="radio" name="has-been-read" value="Yes" id="book-dialog__yes" required>
-          </label>
-          <label for="book-dialog__no">No
-            <input type="radio" name="has-been-read" value="No" id="book-dialog__no" required>
-          </label>
+          <label for="book-dialog__yes">Yes</label>
+          <input type="radio" name="has-been-read" value="Yes" id="book-dialog__yes" required>
+          <label for="book-dialog__no">No</label>
+          <input type="radio" name="has-been-read" value="No" id="book-dialog__no" required>
         </fieldset>
 
-        <p>
-          <label>Notes: 
-            <textarea name="book-notes" class="notes-input"></textarea>
-          </label>
-        </p>
+        <div class="text-area-group">
+          <div class="input-group">
+            <label for="notes">Notes: </label>
+            <textarea name="book-notes" class="notes-input" id="notes" rows="5"></textarea>
+          </div>
+        </div>
 
-        <p>
+        <div class="dialog__button-group">
           <button value="cancel" formmethod="dialog" class="dialog__cancel" type="close">Cancel</button>
           <button class="dialog__submit">Submit</button>
-        </p>
-    </form>
-</dialog>
+        </div>
+      </form>
+  </dialog>
 
 </body>
 

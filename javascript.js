@@ -1,11 +1,10 @@
-const addBookButton = document.querySelector('.header__add-book');
+const addBookButton = document.querySelector('.header__add-book-button');
 
 const addBookDialog = document.querySelector('.dialog');
 const dialogCancelButton = document.querySelector('.dialog__cancel');
 const dialogSubmitButton = document.querySelector('.dialog__submit')
 
 const bookForm = document.querySelector('.dialog__form')
-
 
 const myLibrary = [];
 
